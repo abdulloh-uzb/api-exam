@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        .box {
+            width: 600px;
+            margin: 0 auto;
+            border:1px solid #e0e0e0;
+            border-radius: 10px;
+        }
+        header {
+            text-align: center;
+            background:#252f3d;
+            padding:20px 0 20px 0;
+        }
+        header h1 {
+            color: #fff;
+            margin: 0;
+        }
+
+        .box1 {
+            padding: 25px 35px;
+        }
+        .box1 h1 {
+            font-size: 20px;
+            padding: 0;
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 0 ;
+        }
+        .box1 p {
+            margin: 0;
+            padding: 0;
+        }
+        .box2 {
+            text-align: center;
+            border-bottom:1px solid #e0e0e0;
+        }
+        .box2 h1 {
+            color:#000;
+            font-size:36px;
+            font-weight:bold;
+            margin: 0;
+        }
+        .box2 h4 {
+            font-weight: bold;
+            margin: 0 0 15px 0;
+        }
+        .box3 {
+            padding: 25px 35px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <header>
+            <h1>MINDUP</h1>
+        </header>
+    
+        <div class="box1">
+            <h1 style="font-size:20px;">Verify your email address</h1>
+            <p>Thanks for starting the new MINDUP account creation process. We want to make sure it's really you. Please enter the following verification code when prompted. If you don’t want to create an account, you can ignore this message.</p>
+        </div>
+        <div class="box2">
+            <h4>Verification code</h4>
+            <h1>{{ .Code }}</h1>
+            <p>(This code is valid for 2 minutes)</p>
+        </div>
+        <div class="box3">
+            <p>MINDUP will never email you and ask you to disclose or verify your password, credit card, or banking account number.</p>
+        </div>
+    </div>
+</body>
+</html>
