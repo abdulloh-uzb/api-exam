@@ -1,0 +1,581 @@
+definitions:
+  customer.Address:
+    properties:
+      district:
+        type: string
+      id:
+        type: integer
+      street:
+        type: string
+    type: object
+  customer.Admin:
+    properties:
+      access_token:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      refresh_token:
+        type: string
+      username:
+        type: string
+    type: object
+  customer.Customer:
+    properties:
+      access_token:
+        type: string
+      addresses:
+        items:
+          $ref: '#/definitions/customer.Address'
+        type: array
+      bio:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      last_name:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      posts:
+        items:
+          $ref: '#/definitions/customer.Post'
+        type: array
+      rankings:
+        items:
+          $ref: '#/definitions/customer.Ranking'
+        type: array
+      refresh_token:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  customer.Post:
+    properties:
+      created_at:
+        type: string
+      customer_id:
+        type: integer
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  customer.Ranking:
+    properties:
+      customer_id:
+        type: integer
+      description:
+        type: string
+      name:
+        type: string
+      post_id:
+        type: integer
+      ranking:
+        type: integer
+    type: object
+  models.Address:
+    properties:
+      district:
+        type: string
+      street:
+        type: string
+    type: object
+  models.CustomerReq:
+    properties:
+      addresses:
+        items:
+          $ref: '#/definitions/models.Address'
+        type: array
+      bio:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+      phoneNumber:
+        type: string
+      username:
+        type: string
+    type: object
+  models.Login:
+    properties:
+      accessToken:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+      refreshToken:
+        type: string
+    type: object
+  models.UpdatePost:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.UpdatePostResp:
+    properties:
+      createdAt:
+        type: string
+      customerId:
+        type: integer
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  models.Verify:
+    properties:
+      accessToken:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      id:
+        type: integer
+      lastName:
+        type: string
+      refreshToken:
+        type: string
+    type: object
+  post.Customer:
+    properties:
+      bio:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      last_name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  post.Media:
+    properties:
+      id:
+        type: integer
+      link:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+    type: object
+  post.MediaReq:
+    properties:
+      link:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+    type: object
+  post.Post:
+    properties:
+      created_at:
+        type: string
+      customer:
+        items:
+          $ref: '#/definitions/post.Customer'
+        type: array
+      customer_id:
+        type: integer
+      description:
+        type: string
+      id:
+        type: integer
+      medias:
+        items:
+          $ref: '#/definitions/post.Media'
+        type: array
+      name:
+        type: string
+      ranking:
+        items:
+          $ref: '#/definitions/post.Ranking'
+        type: array
+      updated_at:
+        type: string
+    type: object
+  post.PostReq:
+    properties:
+      customer_id:
+        type: integer
+      description:
+        type: string
+      medias:
+        items:
+          $ref: '#/definitions/post.MediaReq'
+        type: array
+      name:
+        type: string
+    type: object
+  post.Ranking:
+    properties:
+      customer_id:
+        type: integer
+      description:
+        type: string
+      name:
+        type: string
+      post_id:
+        type: integer
+      ranking:
+        type: integer
+    type: object
+info:
+  contact:
+    url: https://t.me/abdullohus
+  description: This is api for exam.
+  title: Exam API
+  version: "1.0"
+paths:
+  /v1/admin-login/{email}/{password}:
+    get:
+      consumes:
+      - application/json
+      description: this func login admin
+      parameters:
+      - description: email
+        in: path
+        name: email
+        required: true
+        type: string
+      - description: password
+        in: path
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/customer.Admin'
+      summary: admin login
+      tags:
+      - admin
+  /v1/create-post:
+    post:
+      consumes:
+      - application/json
+      description: this func creates post
+      parameters:
+      - description: Post
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/post.PostReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/post.Post'
+      security:
+      - BearerAuth: []
+      summary: create post with info
+      tags:
+      - post
+  /v1/delete-customer/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this func delete customer by customer id
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      security:
+      - BearerAuth: []
+      summary: delete customer
+      tags:
+      - customer
+  /v1/delete-post/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this func delete post by post id
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      security:
+      - BearerAuth: []
+      summary: delete post
+      tags:
+      - post
+  /v1/get-customer/{id}:
+    get:
+      consumes:
+      - application/json
+      description: this func get customer
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      security:
+      - BearerAuth: []
+      summary: get customer with info
+      tags:
+      - customer
+  /v1/get-post/{id}:
+    get:
+      consumes:
+      - application/json
+      description: this func get post by id
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      security:
+      - BearerAuth: []
+      summary: get post
+      tags:
+      - post
+  /v1/getpostlist/{id}:
+    get:
+      consumes:
+      - application/json
+      description: this func get list of customers by post id
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      security:
+      - BearerAuth: []
+      summary: get post list
+      tags:
+      - post
+  /v1/list-customer:
+    get:
+      consumes:
+      - application/json
+      description: this func get list of customers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      security:
+      - BearerAuth: []
+      summary: get customer list
+      tags:
+      - customer
+  /v1/list-post:
+    get:
+      consumes:
+      - application/json
+      description: this func get list of posts
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+      security:
+      - BearerAuth: []
+      summary: get post list
+      tags:
+      - post
+  /v1/login/{email}/{password}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: email
+        in: path
+        name: email
+        required: true
+        type: string
+      - description: password
+        in: path
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Login'
+      summary: Login customer
+      tags:
+      - Login
+  /v1/register:
+    post:
+      consumes:
+      - application/json
+      description: Registration
+      parameters:
+      - description: Customers
+        in: body
+        name: customer
+        required: true
+        schema:
+          $ref: '#/definitions/models.CustomerReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/customer.Customer'
+      summary: Register
+      tags:
+      - Register
+  /v1/update-customer:
+    put:
+      consumes:
+      - application/json
+      description: this func update customer
+      parameters:
+      - description: Customer
+        in: body
+        name: customer
+        required: true
+        schema:
+          $ref: '#/definitions/customer.Customer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/customer.Customer'
+      security:
+      - BearerAuth: []
+      summary: update customer
+      tags:
+      - customer
+  /v1/update-post:
+    put:
+      consumes:
+      - application/json
+      description: this func update post
+      parameters:
+      - description: Post
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdatePost'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UpdatePostResp'
+      security:
+      - BearerAuth: []
+      summary: update post
+      tags:
+      - post
+  /v1/verify/{email}/{code}:
+    get:
+      consumes:
+      - application/json
+      description: Verifys customer
+      parameters:
+      - description: email
+        in: path
+        name: email
+        required: true
+        type: string
+      - description: code
+        in: path
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Verify'
+      summary: Verify customer
+      tags:
+      - Register
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

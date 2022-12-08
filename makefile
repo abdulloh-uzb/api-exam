@@ -5,3 +5,5 @@ run:
 
 proto-gen:
 	./scripts/gen-proto.sh	${CURRENT_DIR}
+swag:
+	swag init -g ./api/router.go -o api/docs

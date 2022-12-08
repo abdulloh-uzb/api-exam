@@ -55,9 +55,9 @@ func Load() Config {
 	c.CustomerServiceHost = cast.ToString(getOrReturnDefault("CUSTOMER_SERVICE_HOST", "127.0.0.1"))
 	c.CustomerServicePort = cast.ToInt(getOrReturnDefault("CUSTOMER_SERVICE_PORT", 8002))
 	c.PostServiceHost = cast.ToString(getOrReturnDefault("POST_SERVICE_HOST", "127.0.0.1"))
-	c.PostServicePort = cast.ToInt(getOrReturnDefault("POST_SERVICE_PORT", 8004))
+	c.PostServicePort = cast.ToInt(getOrReturnDefault("POST_SERVICE_PORT", 8000))
 	c.ReytingServiceHost = cast.ToString(getOrReturnDefault("REYTING_SERVICE_HOST", "127.0.0.1"))
-	c.ReytingServicePort = cast.ToInt(getOrReturnDefault("REYTING_SERVICE_PORT", 8005))
+	c.ReytingServicePort = cast.ToInt(getOrReturnDefault("REYTING_SERVICE_PORT", 1111))
 
 	c.CtxTimeout = cast.ToInt(getOrReturnDefault("CTX_TIMEOUT", 7))
 
