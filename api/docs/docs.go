@@ -96,6 +96,38 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/create-reyting": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this func creates post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post"
+                ],
+                "summary": "create post with info",
+                "parameters": [
+                    {
+                        "description": "Post",
+                        "name": "post",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/reyting.Ranking"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
         "/v1/delete-customer/{id}": {
             "delete": {
                 "security": [
@@ -888,6 +920,26 @@ const docTemplate = `{
             }
         },
         "post.Ranking": {
+            "type": "object",
+            "properties": {
+                "customer_id": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "post_id": {
+                    "type": "integer"
+                },
+                "ranking": {
+                    "type": "integer"
+                }
+            }
+        },
+        "reyting.Ranking": {
             "type": "object",
             "properties": {
                 "customer_id": {

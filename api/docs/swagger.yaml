@@ -260,6 +260,19 @@ definitions:
       ranking:
         type: integer
     type: object
+  reyting.Ranking:
+    properties:
+      customer_id:
+        type: integer
+      description:
+        type: string
+      name:
+        type: string
+      post_id:
+        type: integer
+      ranking:
+        type: integer
+    type: object
 info:
   contact:
     url: https://t.me/abdullohus
@@ -312,6 +325,26 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/post.Post'
+      security:
+      - BearerAuth: []
+      summary: create post with info
+      tags:
+      - post
+  /v1/create-reyting:
+    post:
+      consumes:
+      - application/json
+      description: this func creates post
+      parameters:
+      - description: Post
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/reyting.Ranking'
+      produces:
+      - application/json
+      responses: {}
       security:
       - BearerAuth: []
       summary: create post with info
