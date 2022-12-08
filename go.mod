@@ -13,7 +13,6 @@ require (
 	github.com/swaggo/files v0.0.0-20220728132757-551d4a08d97a
 	github.com/swaggo/gin-swagger v1.5.3
 	github.com/swaggo/swag v1.8.8
-	gitlab.com/exam23/api-gateway v0.0.0-20221103044301-f97f2969574d
 	go.uber.org/zap v1.24.0
 	golang.org/x/crypto v0.3.0
 	google.golang.org/grpc v1.51.0

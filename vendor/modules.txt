@@ -129,13 +129,6 @@ github.com/swaggo/swag
 # github.com/ugorji/go/codec v1.2.7
 ## explicit; go 1.11
 github.com/ugorji/go/codec
-# gitlab.com/exam23/api-gateway v0.0.0-20221103044301-f97f2969574d
-## explicit; go 1.19
-gitlab.com/exam23/api-gateway/api/middleware
-gitlab.com/exam23/api-gateway/api/models
-gitlab.com/exam23/api-gateway/api/tokens
-gitlab.com/exam23/api-gateway/config
-gitlab.com/exam23/api-gateway/pkg/logger
 # go.uber.org/atomic v1.7.0
 ## explicit; go 1.13
 go.uber.org/atomic
