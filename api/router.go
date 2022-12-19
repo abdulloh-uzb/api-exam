@@ -82,6 +82,9 @@ func New(option Option) *gin.Engine {
 	api.DELETE("/delete-post/:id", handlerV1.DeletePostById)
 	api.GET("/getpostlist/:id", handlerV1.GetPostByCustomerId)
 
+	// reyting
+	api.POST("/create-reyting", handlerV1.CreateReyting)
+
 	// Admin
 	api.GET("/admin-login/:email/:password", handlerV1.AdminLogin)
 

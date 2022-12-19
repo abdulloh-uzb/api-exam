@@ -53,7 +53,7 @@ func Load() Config {
 	c.CustomerServicePort = cast.ToInt(getOrReturnDefault("CUSTOMER_SERVICE_PORT", 8002))
 	c.PostServiceHost = cast.ToString(getOrReturnDefault("POST_SERVICE_HOST", "post-service"))
 	c.PostServicePort = cast.ToInt(getOrReturnDefault("POST_SERVICE_PORT", 8000))
-	c.ReytingServiceHost = cast.ToString(getOrReturnDefault("REYTING_SERVICE_HOST", "reyting-service"))
+	c.ReytingServiceHost = cast.ToString(getOrReturnDefault("REYTING_SERVICE_HOST", "review-service"))
 	c.ReytingServicePort = cast.ToInt(getOrReturnDefault("REYTING_SERVICE_PORT", 1111))
 	c.RedisHost = cast.ToString(getOrReturnDefault("REDIS_HOST", "redis"))
 	c.RedisPort = cast.ToString(getOrReturnDefault("REDIS_PORT", "6379"))

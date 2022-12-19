@@ -3,11 +3,12 @@ package v1
 import (
 	"api-exam/genproto/reyting"
 	l "api-exam/pkg/logger"
-	"api-exam/vendor/github.com/gin-gonic/gin"
 	"context"
 	"fmt"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 // @Summary create post with info

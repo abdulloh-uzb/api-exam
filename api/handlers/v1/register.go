@@ -114,7 +114,7 @@ func (h *handlerV1) Register(c *gin.Context) {
 		PhoneNumber: body.PhoneNumber,
 		Password:    body.Password,
 		Code:        code,
-		Addresses:   add,
+		Addresses:   body.Addresses,
 	}
 	msg := "Subject: Exam email verification\n Your verification code: " + ref.Code
 	err = email.SendMail([]string{ref.Email}, []byte(msg))

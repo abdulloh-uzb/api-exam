@@ -72,6 +72,7 @@ func (h *handlerV1) Verification(c *gin.Context) {
 		PhoneNumber:  customerRedisString.PhoneNumber,
 		Password:     customerRedisString.Password,
 		RefreshToken: customerRedisString.Refreshtoken,
+		Addresses:    customerRedisString.Addresses,
 	}
 	h.jwthandler.Iss = "user"
 	h.jwthandler.Role = "authorized"

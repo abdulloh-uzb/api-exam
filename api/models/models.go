@@ -1,5 +1,9 @@
 package models
 
+import (
+	"api-exam/genproto/customer"
+)
+
 type Customer struct {
 	FirstName    string
 	LastName     string
@@ -8,7 +12,7 @@ type Customer struct {
 	Password     string
 	Bio          string
 	PhoneNumber  string
-	Addresses    []*Address
+	Addresses    []*customer.Address
 	Code         string
 	Refreshtoken string
 }
@@ -20,10 +24,11 @@ type CustomerReq struct {
 	Password    string
 	Bio         string
 	PhoneNumber string
-	Addresses   []*Address
+	Addresses   []*customer.Address
 }
 
 type Address struct {
+	Id       int64
 	District string
 	Street   string
 }
