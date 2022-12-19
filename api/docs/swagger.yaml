@@ -90,18 +90,11 @@ definitions:
       ranking:
         type: integer
     type: object
-  models.Address:
-    properties:
-      district:
-        type: string
-      street:
-        type: string
-    type: object
   models.CustomerReq:
     properties:
       addresses:
         items:
-          $ref: '#/definitions/models.Address'
+          $ref: '#/definitions/customer.Address'
         type: array
       bio:
         type: string
@@ -131,6 +124,25 @@ definitions:
       password:
         type: string
       refreshToken:
+        type: string
+    type: object
+  models.UpdateCustomer:
+    properties:
+      addresses:
+        items:
+          $ref: '#/definitions/customer.Address'
+        type: array
+      bio:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+      phoneNumber:
         type: string
     type: object
   models.UpdatePost:
@@ -349,7 +361,7 @@ paths:
       - BearerAuth: []
       summary: create post with info
       tags:
-      - post
+      - reyting
   /v1/delete-customer/{id}:
     delete:
       consumes:
@@ -543,14 +555,14 @@ paths:
         name: customer
         required: true
         schema:
-          $ref: '#/definitions/customer.Customer'
+          $ref: '#/definitions/models.UpdateCustomer'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/customer.Customer'
+            $ref: '#/definitions/models.UpdateCustomer'
       security:
       - BearerAuth: []
       summary: update customer

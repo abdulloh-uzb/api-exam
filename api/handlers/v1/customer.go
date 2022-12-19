@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"api-exam/api/models"
 	"api-exam/genproto/customer"
 	l "api-exam/pkg/logger"
 	"context"
@@ -117,12 +118,12 @@ func (h *handlerV1) DeleteCustomerById(c *gin.Context) {
 // @Security     BearerAuth
 // @Accept json
 // @Produce json
-// @Param customer body customer.Customer true "Customer"
-// @Success 200 {object} customer.Customer
+// @Param customer body models.UpdateCustomer true "Customer"
+// @Success 200 {object} models.UpdateCustomer
 // @Router /v1/update-customer [put]
 func (h *handlerV1) UpdateCustomer(c *gin.Context) {
 	var (
-		body        customer.Customer
+		body        models.UpdateCustomer
 		jspbMarshal protojson.MarshalOptions
 	)
 	jspbMarshal.UseProtoNames = true

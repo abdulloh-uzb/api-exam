@@ -13,7 +13,7 @@ import (
 
 // @Summary create post with info
 // @Description this func creates post
-// @Tags post
+// @Tags reyting
 // @Accept json
 // @Produce json
 // @Security     BearerAuth

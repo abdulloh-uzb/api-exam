@@ -26,7 +26,15 @@ type CustomerReq struct {
 	PhoneNumber string
 	Addresses   []*customer.Address
 }
-
+type UpdateCustomer struct {
+	FirstName   string
+	LastName    string
+	Password    string
+	PhoneNumber string
+	Email       string
+	Bio         string
+	Addresses   []*customer.Address
+}
 type Address struct {
 	Id       int64
 	District string
